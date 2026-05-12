@@ -22,16 +22,36 @@
   // ---- mobile nav ----
   const menuBtn = document.getElementById('menuToggle');
   const nav = document.querySelector('.primary-nav');
+
+  const closeNav = () => {
+    if (!nav?.classList.contains('open')) return;
+    nav.classList.remove('open');
+    menuBtn?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  };
+  const openNav = () => {
+    nav?.classList.add('open');
+    menuBtn?.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-open');
+  };
+
   menuBtn?.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', String(open));
+    nav?.classList.contains('open') ? closeNav() : openNav();
   });
   // close menu when a link is tapped
   nav?.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      nav.classList.remove('open');
-      menuBtn?.setAttribute('aria-expanded', 'false');
-    });
+    a.addEventListener('click', closeNav);
+  });
+  // close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav?.classList.contains('open')) closeNav();
+  });
+  // close on tap outside the nav
+  document.addEventListener('click', (e) => {
+    if (!nav?.classList.contains('open')) return;
+    const t = e.target;
+    if (nav.contains(t) || menuBtn.contains(t)) return;
+    closeNav();
   });
 
   // ---- sticky header shadow + back-to-top ----
@@ -57,6 +77,9 @@
 
   const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
   let currentIdx = -1;
+  let lastFocused = null;
+
+  const toWebp = (src) => src.replace(/\.jpe?g$/i, '.webp');
 
   const renderSlide = (idx) => {
     const item = galleryItems[idx];
@@ -64,16 +87,41 @@
     const src = item.getAttribute('data-img');
     const lang = html.getAttribute('data-lang') || 'en';
     const caption = item.getAttribute(lang === 'zh' ? 'data-caption-zh' : 'data-caption-en') || '';
-    lbImage.innerHTML = `<img src="${src}" alt="${caption.replace(/"/g, '&quot;')}" />`;
+    const safeCaption = caption.replace(/"/g, '&quot;');
+    // <picture> with WebP source + JPEG fallback
+    lbImage.innerHTML =
+      `<picture>` +
+        `<source type="image/webp" srcset="${toWebp(src)}" />` +
+        `<img src="${src}" alt="${safeCaption}" decoding="async" />` +
+      `</picture>`;
     if (lbCaption) lbCaption.textContent = caption;
     currentIdx = idx;
   };
 
+  const focusableSelector = 'button, [href], [tabindex]:not([tabindex="-1"])';
+  const trapFocus = (e) => {
+    if (e.key !== 'Tab' || !lightbox?.classList.contains('open')) return;
+    const focusables = lightbox.querySelectorAll(focusableSelector);
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
+
   const openLightbox = (idx) => {
+    lastFocused = document.activeElement;
     renderSlide(idx);
     lightbox?.classList.add('open');
     lightbox?.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    // move focus into the modal
+    setTimeout(() => lbClose?.focus(), 0);
   };
   const closeLightbox = () => {
     lightbox?.classList.remove('open');
@@ -81,6 +129,9 @@
     document.body.style.overflow = '';
     if (lbImage) lbImage.innerHTML = '';
     currentIdx = -1;
+    // restore focus to the gallery thumb that opened the modal
+    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    lastFocused = null;
   };
   const nextSlide = () => {
     if (currentIdx < 0) return;
@@ -103,9 +154,34 @@
   document.addEventListener('keydown', (e) => {
     if (!lightbox?.classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') nextSlide();
-    if (e.key === 'ArrowLeft') prevSlide();
+    else if (e.key === 'ArrowRight') nextSlide();
+    else if (e.key === 'ArrowLeft') prevSlide();
+    else if (e.key === 'Tab') trapFocus(e);
   });
+
+  // ---- lightbox touch swipe ----
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartT = 0;
+  lightbox?.addEventListener('touchstart', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    const t = e.changedTouches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+    touchStartT = Date.now();
+  }, { passive: true });
+  lightbox?.addEventListener('touchend', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    const dt = Date.now() - touchStartT;
+    // horizontal swipe: > 50px, faster than 600ms, mostly horizontal
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5 && dt < 600) {
+      if (dx < 0) nextSlide();
+      else prevSlide();
+    }
+  }, { passive: true });
 
   // ---- footer year ----
   const yearEl = document.getElementById('year');

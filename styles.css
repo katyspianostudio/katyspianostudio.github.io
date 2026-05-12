@@ -30,6 +30,37 @@
 /* --- reset & base --- */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+
+/* Respect users who request reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip-to-content link — visible only on keyboard focus */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1100;
+  padding: 10px 16px;
+  background: var(--charcoal);
+  color: var(--ivory);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  border-radius: var(--radius);
+}
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+  color: var(--ivory);
+}
 body {
   margin: 0;
   font-family: var(--sans);
@@ -203,8 +234,8 @@ html[data-lang="zh"] body { letter-spacing: .01em; }
 }
 .menu-toggle {
   display: none;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -888,9 +919,18 @@ html[data-lang="zh"] .portrait-caption .caption-role {
 .muted { color: var(--muted); font-size: 14px; }
 
 /* --- responsive --- */
+
+/* Intermediate breakpoint — hero gets cramped before 768 */
+@media (max-width: 900px) {
+  .hero-grid { gap: 56px; }
+  .hero { padding: 64px 0 84px; }
+}
+
 @media (max-width: 1024px) {
   .philosophy-grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Preserve the featured-card hierarchy on tablet: span the full top row. */
+  .service-card.featured { grid-column: 1 / -1; }
   .gallery { grid-template-columns: repeat(3, 1fr); }
   .gallery-1 { grid-template-columns: minmax(0, 320px); }
   .two-col { grid-template-columns: 1fr; gap: 40px; }
@@ -967,4 +1007,14 @@ html[data-lang="zh"] .portrait-caption .caption-role {
   .contact-info-grid { grid-template-columns: 1fr; }
   .contact-info-grid li { border-right: none !important; border-bottom: 1px solid rgba(250, 247, 242, 0.12); }
   .contact-info-grid li:last-child { border-bottom: none; }
+  .trust-item strong { font-size: 20px; }
+  .trust-item span { font-size: 11px; letter-spacing: .03em; }
 }
+
+@media (max-width: 360px) {
+  .trust-row { grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 24px; }
+  .hero-title { font-size: 32px; }
+}
+
+/* Prevent body scroll when mobile nav is open */
+body.nav-open { overflow: hidden; }

@@ -9,12 +9,56 @@
   <meta property="og:title" content="Yang Chen Piano Studio · Boston Piano Lessons" />
   <meta property="og:description" content="Private piano lessons with Katy Chen, M.M. New England Conservatory." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/portrait-1600.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yang Chen Piano Studio · Boston Piano Lessons" />
+  <meta name="twitter:description" content="Private piano lessons with Katy Chen, M.M. New England Conservatory." />
+  <meta name="twitter:image" content="assets/portrait-1600.jpg" />
+  <meta name="theme-color" content="#1f1b16" />
+
+  <!-- Inline SVG favicon (monogram) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23faf7f2'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='32' font-weight='600' text-anchor='middle' fill='%237a1f2b'%3EYC%3C/text%3E%3C/svg%3E" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Structured data: LocalBusiness / MusicSchool -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["MusicSchool", "LocalBusiness"],
+    "name": "Yang Chen Piano Studio",
+    "alternateName": "陈扬钢琴工作室",
+    "description": "Private piano lessons with Katy Chen, M.M. New England Conservatory.",
+    "image": "assets/portrait-1600.jpg",
+    "founder": {
+      "@type": "Person",
+      "name": "Katy Chen",
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "New England Conservatory" },
+        { "@type": "CollegeOrUniversity", "name": "Central Conservatory of Music, Beijing" }
+      ]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lynnfield",
+      "addressRegion": "MA",
+      "addressCountry": "US"
+    },
+    "areaServed": "Greater Boston Area",
+    "telephone": "+1-617-657-3351",
+    "email": "katyspianostudio@gmail.com",
+    "knowsLanguage": ["en", "zh"],
+    "priceRange": "$$"
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#about">Skip to content</a>
 
   <!-- ============ HEADER / NAV ============ -->
   <header class="site-header" id="siteHeader">
@@ -107,7 +151,19 @@
       <div class="hero-portrait">
         <div class="portrait-frame">
           <div class="portrait-placeholder">
-            <img src="assets/portrait.jpg" alt="Portrait of Katy Chen" loading="eager" />
+            <picture>
+              <source
+                type="image/webp"
+                srcset="assets/portrait-800.webp 800w, assets/portrait-1600.webp 1600w"
+                sizes="(max-width: 768px) 360px, (max-width: 1024px) 40vw, 440px" />
+              <img
+                src="assets/portrait-800.jpg"
+                srcset="assets/portrait-800.jpg 800w, assets/portrait-1600.jpg 1600w"
+                sizes="(max-width: 768px) 360px, (max-width: 1024px) 40vw, 440px"
+                width="800" height="1000"
+                alt="Portrait of Katy Chen"
+                loading="eager" fetchpriority="high" decoding="async" />
+            </picture>
           </div>
           <div class="portrait-caption">
             <span class="caption-name">
@@ -339,7 +395,7 @@
         </header>
         <div class="gallery gallery-1">
           <button class="gallery-item" data-img="assets/recitals/2018-summer-flyer.jpg" data-caption-en="2018 Summer Recital · Welcome poster" data-caption-zh="2018 夏季汇报演出 · 海报">
-            <img src="assets/recitals/2018-summer-flyer.jpg" alt="2018 Summer Recital poster" loading="lazy" />
+            <picture><source type="image/webp" srcset="assets/recitals/2018-summer-flyer-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2018-summer-flyer-480.jpg" alt="2018 Summer Recital poster" width="480" height="640" loading="lazy" decoding="async" /></picture>
             <div class="gallery-meta">
               <span class="lang-en">Recital Poster</span>
               <span class="lang-zh">演出海报</span>
@@ -362,27 +418,27 @@
         </header>
         <div class="gallery">
           <button class="gallery-item" data-img="assets/recitals/2017-summer-flyer.jpg" data-caption-en="2017 Summer Recital · Welcome poster" data-caption-zh="2017 夏季汇报演出 · 海报">
-            <img src="assets/recitals/2017-summer-flyer.jpg" alt="2017 Summer Recital poster" loading="lazy" />
+            <picture><source type="image/webp" srcset="assets/recitals/2017-summer-flyer-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-flyer-480.jpg" alt="2017 Summer Recital poster" width="480" height="360" loading="lazy" decoding="async" /></picture>
             <div class="gallery-meta">
               <span class="lang-en">Recital Poster</span>
               <span class="lang-zh">演出海报</span>
             </div>
           </button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-01.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-01.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-02.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-02.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-03.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-03.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-04.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-04.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-05.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-05.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-06.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-06.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-07.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-07.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-08.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-08.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-09.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-09.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-10.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-10.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-11.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-11.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-12.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-12.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-13.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-13.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-14.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-14.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2017-summer-15.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><img src="assets/recitals/2017-summer-15.jpg" alt="Student performance" loading="lazy" /></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-01.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-01-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-01-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-02.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-02-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-02-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-03.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-03-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-03-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-04.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-04-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-04-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-05.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-05-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-05-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-06.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-06-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-06-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-07.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-07-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-07-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-08.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-08-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-08-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-09.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-09-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-09-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-10.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-10-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-10-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-11.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-11-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-11-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-12.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-12-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-12-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-13.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-13-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-13-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-14.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-14-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-14-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2017-summer-15.jpg" data-caption-en="2017 Summer Recital · Student performance" data-caption-zh="2017 夏季汇报演出 · 学生演奏"><picture><source type="image/webp" srcset="assets/recitals/2017-summer-15-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2017-summer-15-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
         </div>
       </article>
 
@@ -400,7 +456,7 @@
         </header>
         <div class="gallery gallery-1">
           <button class="gallery-item" data-img="assets/recitals/2016-christmas-flyer.jpg" data-caption-en="2016 Christmas Recital · Invitation" data-caption-zh="2016 圣诞汇报演出 · 邀请函">
-            <img src="assets/recitals/2016-christmas-flyer.jpg" alt="2016 Christmas Recital invitation" loading="lazy" />
+            <picture><source type="image/webp" srcset="assets/recitals/2016-christmas-flyer-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2016-christmas-flyer-480.jpg" alt="2016 Christmas Recital invitation" width="480" height="640" loading="lazy" decoding="async" /></picture>
             <div class="gallery-meta">
               <span class="lang-en">Recital Invitation</span>
               <span class="lang-zh">演出邀请函</span>
@@ -423,21 +479,21 @@
         </header>
         <div class="gallery">
           <button class="gallery-item" data-img="assets/recitals/2016-recital-flyer.jpg" data-caption-en="2016 Student Recital · Invitation" data-caption-zh="2016 学生汇报演出 · 邀请函">
-            <img src="assets/recitals/2016-recital-flyer.jpg" alt="2016 Student Recital invitation" loading="lazy" />
+            <picture><source type="image/webp" srcset="assets/recitals/2016-recital-flyer-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2016-recital-flyer-480.jpg" alt="2016 Student Recital invitation" width="480" height="360" loading="lazy" decoding="async" /></picture>
             <div class="gallery-meta">
               <span class="lang-en">Recital Invitation</span>
               <span class="lang-zh">演出邀请函</span>
             </div>
           </button>
-          <button class="gallery-item" data-img="assets/recitals/2016-fall-01.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><img src="assets/recitals/2016-fall-01.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2016-fall-02.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><img src="assets/recitals/2016-fall-02.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2016-fall-03.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><img src="assets/recitals/2016-fall-03.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2016-fall-04.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><img src="assets/recitals/2016-fall-04.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2016-fall-05.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><img src="assets/recitals/2016-fall-05.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2016-fall-06.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><img src="assets/recitals/2016-fall-06.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2016-fall-07.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><img src="assets/recitals/2016-fall-07.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2016-fall-08.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><img src="assets/recitals/2016-fall-08.jpg" alt="Student performance" loading="lazy" /></button>
-          <button class="gallery-item" data-img="assets/recitals/2016-fall-09.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><img src="assets/recitals/2016-fall-09.jpg" alt="Student performance" loading="lazy" /></button>
+          <button class="gallery-item" data-img="assets/recitals/2016-fall-01.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><picture><source type="image/webp" srcset="assets/recitals/2016-fall-01-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2016-fall-01-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2016-fall-02.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><picture><source type="image/webp" srcset="assets/recitals/2016-fall-02-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2016-fall-02-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2016-fall-03.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><picture><source type="image/webp" srcset="assets/recitals/2016-fall-03-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2016-fall-03-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2016-fall-04.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><picture><source type="image/webp" srcset="assets/recitals/2016-fall-04-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2016-fall-04-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2016-fall-05.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><picture><source type="image/webp" srcset="assets/recitals/2016-fall-05-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2016-fall-05-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2016-fall-06.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><picture><source type="image/webp" srcset="assets/recitals/2016-fall-06-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2016-fall-06-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2016-fall-07.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><picture><source type="image/webp" srcset="assets/recitals/2016-fall-07-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2016-fall-07-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2016-fall-08.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><picture><source type="image/webp" srcset="assets/recitals/2016-fall-08-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2016-fall-08-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
+          <button class="gallery-item" data-img="assets/recitals/2016-fall-09.jpg" data-caption-en="2016 Student Recital · Performance" data-caption-zh="2016 学生汇报演出 · 演奏"><picture><source type="image/webp" srcset="assets/recitals/2016-fall-09-480.webp" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 280px" /><img src="assets/recitals/2016-fall-09-480.jpg" alt="Student performance" width="480" height="360" loading="lazy" decoding="async" /></picture></button>
         </div>
       </article>
     </div>
