@@ -89,7 +89,6 @@ html[data-lang="zh"] .lang-en { display: none; }
 html[data-lang="en"] .lang-en,
 html[data-lang="zh"] .lang-zh { display: inline; }
 /* but inside cards/lists where the only child is a lang span, display block */
-.cred-detail .lang-en, .cred-detail .lang-zh,
 .contact-info .lang-en, .contact-info .lang-zh { display: inline; }
 
 html[data-lang="zh"] {
@@ -106,7 +105,7 @@ html[data-lang="zh"] body { letter-spacing: .01em; }
   letter-spacing: .08em;
   text-transform: uppercase;
   border-radius: var(--radius);
-  transition: all .2s ease;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
   cursor: pointer;
   border: 1.5px solid transparent;
   text-align: center;
@@ -118,7 +117,6 @@ html[data-lang="zh"] body { letter-spacing: .01em; }
 .btn-primary:hover {
   background: var(--burgundy-dark);
   color: var(--ivory);
-  transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
 .btn-ghost {
@@ -444,6 +442,7 @@ html[data-lang="zh"] .portrait-caption .caption-role {
 }
 .section-dark .section-eyebrow { color: var(--gold); }
 .section-dark .section-title { color: var(--ivory); }
+.section-dark .section-lede { color: rgba(250, 247, 242, 0.75); }
 .section-dark .muted { color: rgba(250, 247, 242, 0.6); }
 .section-dark a { color: var(--gold); }
 .section-dark a:hover { color: var(--ivory); }
@@ -491,29 +490,110 @@ html[data-lang="zh"] .portrait-caption .caption-role {
 }
 .prose strong { color: var(--charcoal); }
 
-/* --- credentials list --- */
-.credentials-list {
-  list-style: none;
-  padding: 0;
-  margin: 36px 0 0;
-  border-top: 1px solid var(--line);
+/* --- about: bio prose --- */
+.bio-prose p {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--charcoal-soft);
+  margin: 0 0 24px;
 }
-.credentials-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 15px;
+.bio-prose p:last-child { margin-bottom: 0; }
+.bio-prose em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--charcoal);
+  font-size: 19px;
+  letter-spacing: .01em;
 }
-.cred-label {
-  color: var(--muted);
-  letter-spacing: .03em;
-}
-.cred-detail {
+.bio-prose strong {
   color: var(--charcoal);
   font-weight: 500;
-  text-align: right;
+}
+html[data-lang="zh"] .bio-prose p {
+  line-height: 1.95;
+  text-align: justify;
+}
+
+/* year micro-anchors — tabular lining figures, slight weight + color bump */
+.bio-prose .year {
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-weight: 500;
+  color: var(--charcoal);
+  letter-spacing: .02em;
+}
+
+/* editorial lead-in on the opening sentence */
+.bio-prose .lang-en .lead-in {
+  font-variant-caps: small-caps;
+  font-feature-settings: "smcp" 1;
+  letter-spacing: .06em;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+.bio-prose .lang-zh .lead-in {
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--charcoal);
+}
+
+/* centered title plate above the prose */
+.bio-header {
+  max-width: 820px;
+  margin: 0 auto 72px;
+  text-align: center;
+}
+.bio-header::before {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .55;
+  margin: 0 auto 26px;
+}
+.bio-header .section-eyebrow { margin-bottom: 18px; }
+.bio-header .section-title {
+  margin: 0;
+  font-size: clamp(34px, 4.4vw, 48px);
+  line-height: 1.18;
+}
+/* gold rule with diamond — mirrors hero portrait caption */
+.bio-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 28px 0 18px;
+  color: var(--gold);
+  font-size: 12px;
+  line-height: 1;
+  opacity: .85;
+}
+.bio-rule::before,
+.bio-rule::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .55;
+}
+.bio-role {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+html[data-lang="zh"] .bio-role {
+  font-family: var(--serif);
+  font-size: 15px;
+  letter-spacing: .18em;
+  text-transform: none;
+  font-style: italic;
 }
 
 /* --- philosophy grid --- */
@@ -528,12 +608,11 @@ html[data-lang="zh"] .portrait-caption .caption-role {
   background: rgba(250, 247, 242, 0.04);
   border: 1px solid rgba(250, 247, 242, 0.1);
   border-radius: var(--radius);
-  transition: all .25s;
+  transition: border-color .25s ease, background-color .25s ease;
 }
 .philosophy-card:hover {
   border-color: var(--gold);
   background: rgba(184, 134, 11, 0.06);
-  transform: translateY(-2px);
 }
 .card-icon {
   font-family: var(--serif);
@@ -570,7 +649,7 @@ html[data-lang="zh"] .portrait-caption .caption-role {
   border-radius: var(--radius);
   background: var(--ivory);
   position: relative;
-  transition: all .25s;
+  transition: border-color .25s ease, box-shadow .25s ease;
 }
 .service-card.featured {
   background: var(--charcoal);
@@ -584,8 +663,6 @@ html[data-lang="zh"] .portrait-caption .caption-role {
 .service-card.featured .service-list li::before { color: var(--gold); }
 .service-card:hover {
   border-color: var(--burgundy);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
 }
 .service-tag {
   position: absolute;
@@ -666,9 +743,14 @@ html[data-lang="zh"] .portrait-caption .caption-role {
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
-.gallery-1 {
-  grid-template-columns: minmax(0, 360px);
-  justify-content: start;
+.gallery-banner {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0 8px;
+}
+.gallery-banner .gallery-item {
+  width: 100%;
+  max-width: 460px;
 }
 .gallery-item {
   display: block;
@@ -678,13 +760,11 @@ html[data-lang="zh"] .portrait-caption .caption-role {
   overflow: hidden;
   background: var(--ivory);
   border: 1px solid var(--line);
-  transition: all .25s;
+  transition: border-color .25s ease;
   cursor: pointer;
   position: relative;
 }
 .gallery-item:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
   border-color: var(--burgundy);
 }
 .gallery-item img {
@@ -694,8 +774,10 @@ html[data-lang="zh"] .portrait-caption .caption-role {
   display: block;
   background: var(--cream);
 }
-.gallery-1 .gallery-item img {
-  aspect-ratio: 3 / 4;
+.gallery-banner .gallery-item img {
+  aspect-ratio: auto;
+  width: 100%;
+  height: auto;
 }
 .gallery-meta {
   padding: 12px 16px;
@@ -796,6 +878,32 @@ html[data-lang="zh"] .portrait-caption .caption-role {
   line-height: 1.5;
   color: rgba(250, 247, 242, 0.55);
   max-width: 520px;
+}
+.footer-partner {
+  margin: 16px 0 0;
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(250, 247, 242, 0.6);
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+}
+html[data-lang="zh"] .footer-partner .footer-partner-prefix { order: 2; }
+html[data-lang="zh"] .footer-partner .footer-partner-link { order: 1; }
+.footer-partner-link {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ivory);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
+}
+.footer-partner-link:hover {
+  color: var(--gold);
+  border-color: var(--gold);
 }
 .footer-bottom {
   padding-top: 24px;
@@ -932,7 +1040,8 @@ html[data-lang="zh"] .portrait-caption .caption-role {
   /* Preserve the featured-card hierarchy on tablet: span the full top row. */
   .service-card.featured { grid-column: 1 / -1; }
   .gallery { grid-template-columns: repeat(3, 1fr); }
-  .gallery-1 { grid-template-columns: minmax(0, 320px); }
+  .gallery-banner { padding: 16px 0 4px; }
+  .gallery-banner .gallery-item { max-width: 400px; }
   .two-col { grid-template-columns: 1fr; gap: 40px; }
 }
 
@@ -940,6 +1049,13 @@ html[data-lang="zh"] .portrait-caption .caption-role {
   .hero { padding: 56px 0 72px; }
   .hero-grid { grid-template-columns: 1fr; gap: 56px; }
   .hero-portrait { max-width: 360px; margin: 0 auto; }
+  .portrait-placeholder {
+    box-shadow:
+      0 1px 2px rgba(31, 27, 22, 0.05),
+      0 6px 12px rgba(31, 27, 22, 0.08),
+      0 18px 36px rgba(31, 27, 22, 0.12),
+      0 32px 60px rgba(31, 27, 22, 0.08);
+  }
   .trust-row { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
   .section { padding: 64px 0; }
@@ -970,7 +1086,7 @@ html[data-lang="zh"] .portrait-caption .caption-role {
   .philosophy-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: repeat(2, 1fr); }
-  .gallery-1 { grid-template-columns: minmax(0, 280px); }
+  .gallery-banner .gallery-item { max-width: 340px; }
   .recital { margin-top: 48px; padding-top: 36px; }
   .lightbox { padding: 16px; }
   .lightbox-nav { font-size: 48px; width: 44px; height: 64px; }
@@ -992,11 +1108,14 @@ html[data-lang="zh"] .portrait-caption .caption-role {
   .policy-list > div:nth-child(even) { padding-left: 0; }
 
 
-  .credentials-list li {
-    flex-direction: column;
-    gap: 4px;
+  .bio-prose p { margin: 0 0 20px; }
+  .bio-header {
+    margin: 0 auto 48px;
   }
-  .cred-detail { text-align: left; }
+  .bio-header::before { margin-bottom: 20px; }
+  .bio-rule { margin: 22px 0 14px; }
+  .bio-rule::before,
+  .bio-rule::after { width: 42px; }
 }
 
 @media (max-width: 480px) {

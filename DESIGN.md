@@ -32,15 +32,18 @@ Burgundy carries the brand. Gold is the accent **of the accent** — never a pri
 
 ### Hierarchy
 
-| Element | Family | Size | Weight | Tracking | Case |
-|---|---|---|---|---|---|
-| Hero title | serif | `clamp(36, 5vw, 60)px` | 500 | `-.01em` | Sentence |
-| Section title | serif | `clamp(30, 4vw, 44)px` | 500 | `-.005em` | Sentence |
-| Section eyebrow | sans | 12px | 600 | `.25em` | UPPER |
-| Body / prose | sans | 16–17px | 400 | normal | Sentence |
-| Caption role | sans | 11px | 500 | `.28em` | UPPER |
+| Element | Family | Size | Weight | Tracking | Case | Color |
+|---|---|---|---|---|---|---|
+| Hero title | serif | `clamp(36, 5vw, 60)px` | 500 | `-.01em` | Sentence | `--charcoal` |
+| Section title | serif | `clamp(30, 4vw, 44)px` | 500 | `-.005em` | Sentence | `--charcoal` |
+| Section eyebrow | sans | 12px | 600 | `.25em` | UPPER | `--burgundy` (on dark: `--gold`) |
+| Sub-section eyebrow | sans | 11px | 600 | `.22em` | UPPER | `--muted` |
+| Body / prose | sans | 16–17px | 400 | normal | Sentence | `--charcoal-soft` |
+| Caption role | sans | 11px | 500 | `.28em` | UPPER | `--muted` |
 
 Chinese serif (`Noto Serif SC` / `Songti SC`) takes weight 600 in the hero title for visual parity with the heavier English serif.
+
+**Eyebrow hierarchy:** Section eyebrows (one per section) carry brand color — `--burgundy` on light, `--gold` on dark. Sub-section eyebrows inside a section (e.g. *Education / Performance / Affiliations* groups in the About bio) step down to `--muted` so burgundy stays precious and the section heading remains the loudest mark.
 
 ---
 
@@ -73,7 +76,7 @@ The hero headshot is the marquee design moment. Treat it as a concert-artist ros
 - **Container:** `1180px` max width, `24px` horizontal gutters
 - **Hero grid:** `1.3fr / 1fr` (copy / portrait). Do not narrow the portrait column further — this ratio is balanced and was chosen deliberately.
 - **Section vertical padding:** `100px`
-- **Section background rhythm:** ivory → dark → ivory → cream → cream → dark. Alternation supplies rhythm; no extra dividers needed.
+- **Section background rhythm:** *hero (ivory→cream gradient)* → about (cream) → teaching (dark) → services (ivory) → performances (cream) → policy (cream) → contact (dark). The hero's gradient flows into a cream About so the dark Teaching section lands with full contrast; alternation supplies rhythm and no extra dividers are needed.
 - **Radii:** `2–4px` only. Never pill-shaped or heavily rounded.
 
 ---
@@ -85,7 +88,6 @@ These directions have been tried and rejected — they fight the design's charac
 - Offset / asymmetric decorative frame lines around the portrait
 - Double-line "gilt frame" treatments (burgundy + gold combined rules)
 - Ornamental section dividers (gold fleurons centered between sections)
-- Decorative fleurons or extra symbols inside the portrait caption
 - Narrowing the hero portrait column below `1.3fr / 1fr`
 - "Vintage" / "aged paper" / sepia treatments — target is **restrained modern classic**, not antique
 
@@ -98,3 +100,9 @@ These directions have been tried and rejected — they fight the design's charac
 - Keep gold precious — one beat per region, never structural
 - Bilingual parity: every visible label, button, and caption must have an `.lang-en` and `.lang-zh` span
 - Hairlines (`1px`, `--line` or `--gold @ 55%`) over thick rules
+
+---
+
+## Files
+
+- `index.html` — primary site, loads `styles.css` and `script.js`.
