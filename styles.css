@@ -767,16 +767,23 @@ html[data-lang="zh"] .bio-role {
 .gallery-item:hover {
   border-color: var(--burgundy);
 }
-.gallery-item img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+.gallery-item picture {
   display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
   background: var(--cream);
 }
-.gallery-banner .gallery-item img {
-  aspect-ratio: auto;
+.gallery-item picture img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gallery-banner .gallery-item picture {
+  aspect-ratio: auto;
+  overflow: visible;
+}
+.gallery-banner .gallery-item picture img {
   height: auto;
 }
 .gallery-meta {

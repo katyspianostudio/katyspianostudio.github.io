@@ -71,6 +71,28 @@ The hero headshot is the marquee design moment. Treat it as a concert-artist ros
 
 ---
 
+## Recital Sections (canonical)
+
+Each recital lives in one `<article class="recital">` inside `#performances`. Recitals with a flyer use **two stacked galleries**, not a single mixed grid:
+
+1. **Flyer banner** — `<div class="gallery gallery-banner">`, single item, centered, natural aspect ratio preserved. This is the only place a poster shows full art.
+2. **Photo grid** — `<div class="gallery">` with the candids. Every cell is **locked to 4:3** via `aspect-ratio: 4 / 3` on the `<picture>` wrapper. Mixed-orientation originals (portrait + landscape) center-crop to 4:3 with `object-fit: cover`. The full image opens in the lightbox on click.
+
+**Why aspect-ratio belongs on `<picture>`, not `<img>`:** the `width`/`height` HTML attributes on an `<img>` set intrinsic ratio. With CSS `aspect-ratio` also on the img, browsers honor the HTML attrs and portrait cells render too tall, leaving ivory bands above and below landscape neighbors. Hoisting the rule to the wrapper element wins unambiguously.
+
+### Asset layout
+
+Folder convention: `assets/recitals/<year>/`. For each photo, ship four files:
+
+| Suffix | Purpose | Width |
+|---|---|---|
+| `name.jpg` + `.webp` | Full size — referenced by lightbox `data-img` | ~1280px |
+| `name-480.jpg` + `.webp` | Grid thumbnail | 480px |
+
+Unprocessed source files (raw camera JPGs, anything wider than ~1280px) go in `assets/recitals/<year>/_originals/` and are **not** referenced by the page. The folder is kept for archival, not deployment.
+
+---
+
 ## Layout
 
 - **Container:** `1180px` max width, `24px` horizontal gutters
